@@ -9,15 +9,15 @@ const addNewContact = () => {
   const newContactAddr = $(".addr-form-field").val()
   console.log("add button clicked", newContactName, newContactPhone, newContactAddr);
   contactCollectionModule.postContact(newContactName, newContactPhone, newContactAddr)
-  .then((response) => {
-    console.log("response", response)
-    contactListModule.buildContactList()
-  })
+    .then((response) => {
+      console.log("response", response)
+      contactListModule.buildContactList()
+    })
 }
 
 const contactForm = Object.create({}, {
   buildContactForm: {
-    value: function() {
+    value: function () {
       const formArticle = document.createElement("article")
 
       const nameSection = document.createElement("section")

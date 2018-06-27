@@ -6,18 +6,18 @@ const deleteContact = () => {
   console.log("delete button clicked", event.currentTarget.parentNode.id)
   const contactId = event.currentTarget.parentNode.id
   ContactCollectionModule.deleteContact(contactId)
-  .then(() => {
-    ContactListModule.buildContactList()
-  })
+    .then(() => {
+      ContactListModule.buildContactList()
+    })
 }
 
 const editContact = () => {
   const contactId = event.currentTarget.parentNode.id
   ContactCollectionModule.getContact(contactId)
-  .then((response) => {
-    console.log("contact to be edited", response.phone);
-    buildEditContactForm(response)
-  })
+    .then((response) => {
+      console.log("contact to be edited", response.phone);
+      buildEditContactForm(response)
+    })
 }
 
 const buildEditContactForm = (contact) => {
@@ -81,21 +81,21 @@ const editExistingContact = () => {
   const contactPhone = $(".phone-edit-field").val()
   const contactAddress = $(".addr-edit-field").val()
   ContactCollectionModule.putContact(contactId, contactName, contactPhone, contactAddress)
-  .then(() => {
-    document.querySelector(".edit-contact-article").remove()
-    ContactListModule.buildContactList()
-  })
+    .then(() => {
+      document.querySelector(".edit-contact-article").remove()
+      ContactListModule.buildContactList()
+    })
 }
 
 const contact = Object.create({}, {
   "createContactComponent": {
-    value: function(contact) {
+    value: function (contact) {
 
       const contactSection = document.createElement("section")
       contactSection.id = `${contact.id}`
 
-      for(key in contact){
-        if(key === "id") {
+      for (key in contact) {
+        if (key === "id") {
           const deleteButton = document.createElement("button")
           deleteButton.textContent = "Delete"
           deleteButton.addEventListener("click", deleteContact)
